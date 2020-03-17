@@ -29,7 +29,8 @@ def poland_cases_by_date(day: int, month: int, year: int = 2020) -> int:
     """
     
     # Your code goes here (remove pass)
-    pass
+    result = confirmed_cases.loc[confirmed_cases["Country/Region"]=="Poland",:][f"{month}/{day}/20"].values[0]
+    return(result)
 
 
 def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
@@ -49,7 +50,7 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     """
 
     # Your code goes here (remove pass)
-    pass
+    return confirmed_cases.groupby("Country/Region").sum()[[ f"{month}/{day}/20"]].sort_values(by=f"{month}/{day}/20").tail(5).index
 
 
 def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
